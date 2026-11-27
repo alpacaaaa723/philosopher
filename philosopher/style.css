@@ -1,0 +1,50 @@
+body {
+    font-family: 'Noto Serif KR', serif;
+}
+.fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* 은은한 배경 글로우 효과 */
+.ambient-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, rgba(14, 14, 17, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 컨베이어 벨트 (무한 스크롤 애니메이션) */
+@keyframes conveyorUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+@keyframes conveyorDown {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+}
+
+.conveyor-track-up {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: conveyorUp 35s linear infinite;
+}
+.conveyor-track-down {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: conveyorDown 35s linear infinite;
+}
+
+/* 마우스 올렸을 때 잠시 멈춤 효과 */
+.conveyor-track-up:hover, .conveyor-track-down:hover {
+    animation-play-state: paused;
+}
